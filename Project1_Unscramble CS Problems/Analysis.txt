@@ -1,0 +1,57 @@
+-Task0
+
+The specific position of the elements(first and last) is used as the index for retreiving the data.
+Also according to the data specification, the position of each features are fixed in position.
+So It can be retreived by using the indices, which means that no matter how the big the record is 
+It's possible to look up at constant time.
+Therefore this task only takes O(1).  
+
+-Task1
+
+This task is done by iteratively looping through the call and text lists.
+Because the looping applies to all the elements in the lists, It takes O(n+m) where n is the size of calls and m is the size of texts.
+In worst case, m could be bigger than n.
+(O(2*n) + O(2*m) = O(2*n + 2*m) = O(n+m))
+
+-Task2
+
+First of all, A defaultdict is created for stroing phone number and the corresponding the duration.
+looping over the calls takes O(n) time where n is the size of calls list.
+And then looping over the defaultdict takes O(m) where m is the number of keys(or values) in the dictionary.
+Therefore This task takes O(n+m) time.
+
+-Taks3
+
+--Part A  
+First the looping over calls is used to make all the telephone codes list called by people in the Bangalore.
+At worst case, it takes 3 if-else conditions for each element. So It takes O(3*n) = O(n) where n is the size of calls list.
+
+because The list of codes should be print out in lexicographic order with no duplicates, Pyhton sorted function and set() constructor is used.
+
+To eliminate the duplicates, each elements need to be compared with other elements.
+In worst case where the original collection has no duplicates, each elements are going to be compared with every other elements.
+So It might take O(m^2) where m is the size of codes list and m < n.
+
+If the python sorted built-in function is implemented with merge sort, It would take O(k*log(k)) where k is the size of the set(codes).
+So PartA takes O(n) + O(m^2) + O(k*log(k)).
+
+--PartB 
+It simply loops over codes list. So It takes O(m)
+
+-Taks4
+
+The first loop iterates over calls list while It adds the all of the call to possible_telemarketers list and receiver to the other list.
+It executes 2 set operations.  So It takes O(2*n) = O(n).
+
+Similarly, the second loop iterates over texts list and executes 2 set operations. So It takes O(2*m) = O(m).
+
+And set difference operation is used to get the set T - N consisting of those elements that are in Telemarketers set but not in Non-telemarketer set.
+Since set is implemented by hash, It only takes O(1) to retreive value.
+Therefore Iterating through the set and comparing between the elements from each sets take O(k) where k is the size of the set.
+
+Lastly sorting function is used to print out one per line in lexicographic order.
+If the python sorted built-in function is implemented with merge sort, It would take O(k*log(k)).
+ 
+Overall, The time complexity for this task is O(n) + O(m) + O(k) + O(k*log(k)).
+
+
